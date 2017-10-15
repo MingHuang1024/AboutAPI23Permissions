@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(permission)) {
             return true;
         }
-        return ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+        return ContextCompat.checkSelfPermission(this, permission)
             == PackageManager.PERMISSION_GRANTED;
     }
 
