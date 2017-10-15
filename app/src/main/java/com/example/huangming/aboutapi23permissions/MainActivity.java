@@ -10,7 +10,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 
 /**
@@ -21,6 +20,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     Intent callIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        callIntent =  new Intent(Intent.ACTION_CALL);
+        callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:123"));
         // 打电话权限
         findViewById(R.id.btnCall).setOnClickListener(new View.OnClickListener() {
@@ -86,10 +86,7 @@ public class MainActivity extends AppCompatActivity {
      * @param permission
      * @return
      */
-    private boolean hasPermission(String permission) {
-        if (TextUtils.isEmpty(permission)) {
-            return true;
-        }
+    private boolean hasPermission(@NonNull String permission) {
         return ContextCompat.checkSelfPermission(this, permission)
             == PackageManager.PERMISSION_GRANTED;
     }
@@ -99,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param permissions
      */
-    private void requestPermissions(String[] permissions) {
+    private void requestPermissions(@NonNull String[] permissions) {
         ActivityCompat.requestPermissions(this, permissions, 1);
     }
 }
